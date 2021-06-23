@@ -1,0 +1,17 @@
+const router = require('express').Router();
+const puppeteer = require('puppeteer');
+
+router.use('/test',require('./test'));
+
+//Server side rendering of the front page of the react app using puppeteer
+router.get('/', async (req,res)=>{
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto('http://localhost:3000');
+    await page.waitForSelector('#task-list');
+    let data = await page.content();
+    await browser.close();
+    return res.send(data);
+})
+
+module.exports = router
