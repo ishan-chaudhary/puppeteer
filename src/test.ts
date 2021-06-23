@@ -9,6 +9,7 @@ import puppeteer from "puppeteer";
     await page.goto("http://localhost:3000");
 
     const signInTest = async () => {
+      await page.tracing.start({ path: 'trace.json' });
       await page.waitForSelector("#sign-in-button");
       let signInButton = await page.$("#sign-in-button");
       if (signInButton) {
@@ -34,6 +35,7 @@ import puppeteer from "puppeteer";
       } else {
         console.error("Sign in test failed");
       }
+      await page.tracing.stop();
     };
     await signInTest();
 
