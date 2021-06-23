@@ -1,7 +1,7 @@
-const router = require('express').Router();
-const puppeteer = require('puppeteer');
+import {Router} from 'express';
+import puppeteer from 'puppeteer';
 
-router.use('/test',require('./test'));
+const router: Router = Router();
 
 //Server side rendering of the front page of the react app using puppeteer
 router.get('/', async (req,res)=>{
@@ -14,4 +14,4 @@ router.get('/', async (req,res)=>{
     return res.send(data);
 })
 
-module.exports = router
+export default router

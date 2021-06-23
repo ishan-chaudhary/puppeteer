@@ -4,14 +4,21 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@types/express": "^4.17.12",
+    "@types/puppeteer": "^5.4.3",
     "express": "^4.17.1",
-    "puppeteer": "^10.0.0"
+    "puppeteer": "^10.0.0",
+    "ts-node": "^10.0.0",
+    "ts-node-dev": "^1.1.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "typescript": "^4.3.4"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "react:test":"nodemon test.js"
+    "start": "tsnd --respawn ./src/index.ts",
+    "react:test": "tsnd --respawn ./src/test.ts",
+    "build":"tsc --watch & nodemon ./dist/index.js"
   },
   "author": "ishan",
   "license": "ISC"
